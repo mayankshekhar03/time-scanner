@@ -35,11 +35,12 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   var query = req.body.q;
-  if(moment.unix(query))
-    var unix = moment.unix(query);
-  else
-    var unix = moment(query);
-  var data = {'natural': unix.format("dddd, MMMM Do YYYY"), 'unix': unix};
+  if (String(query).match("[0-9]+") && String(query).length > 2) {
+    var date = moment.unix(query);
+  }else{
+    var date =  moment(String(query));
+  }
+  var data = {'natural': date.format("dddd, MMMM Do YYYY"), 'unix': date};
   res.render('index', {data: data});
 });
 
