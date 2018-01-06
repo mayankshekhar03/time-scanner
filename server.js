@@ -35,13 +35,11 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   var query = req.body.q;
-  if(query.match(/^\d+$/))
-    var unix = query;
+  if(moment.unix(query))
+    var unix = moment.unix(query);
   else
-    var unix = Date.parse(query);
-  var d = new Date(unix);
-  var formatted = d.toString();
-  var data = {'natural': formatted, 'unix': unix};
+    var unix = moment(query);
+  var data = {'natural': unix.format("dddd, MMMM Do YYYY"), 'unix': unix};
   res.render('index', {data: data});
 });
 
