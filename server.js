@@ -33,7 +33,9 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   var query = req.body.q;
-  var data = {'natural': query+'', 'unix': '12345'};
+  var unix = Date.parse(query);
+  if(unix != NaN)
+    var data = {'natural': query+'', 'unix': unix};
   res.render('index', {data: data});
 });
 
