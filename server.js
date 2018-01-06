@@ -22,7 +22,11 @@ app.get('/', function(req, res){
   res.render('index', {data: data});
 });
 
-app
+app.post('/', function(req, res){
+  var query = req.body;
+  var data = {'natural':query+'', 'unix':'12345'};
+  res.render('index', {data: data});
+});
 
 
 // listen for requests :)
