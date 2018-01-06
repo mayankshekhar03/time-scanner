@@ -41,7 +41,7 @@ app.post('/', function(req, res){
   }else if(String(query).match(/^[0-9]+$/) != null){
     var d = moment.unix(Number(query));
     var pd = moment.unix(Number(query)).utc();
-    var data = {'natural':pd.format("dddd, MMMM Do YYYY"), 'unix':d};
+    var data = {'natural':pd.format("dddd, MMMM Do YYYY"), 'unix':query};
   }
   res.render('index', {data: data});
 });
