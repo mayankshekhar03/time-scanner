@@ -35,10 +35,17 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   var query = req.body.q;
-  var d = moment(query);
-  var data = {'natural':d.format(), 'unix':d};
+  if(moment(query).isValid()){
+    var d = moment(query);
+    var data = {'natural':d.format(), 'unix':d};
+  }else if(String(query).match(/^[0-9]+$/) != null){
+    var d = Date.parse(query);
+    var pd = prettyDate(d);
+    var data = {'natural':pd.format(), 'unix':d};
+  }
   res.render('index', {data: data});
 });
+
 
 
 // listen for requests :)
