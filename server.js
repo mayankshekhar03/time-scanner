@@ -17,13 +17,9 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 
-app  var data = {'natural':'jan','unix':1234}.get('/', function(req, res){
-  var data = {'natural':'jan',;
-  res.render('index', data);   
-});
-
-app.get('/?q=:que', function(req, res){
-  res.render('index');
+app.get('/', function(req, res){
+  var data = {'natural':'jan','unix':'1234'};
+  res.render('index', data);
 });
 
 
@@ -31,5 +27,5 @@ app.get('/?q=:que', function(req, res){
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
-  console.log('Youlistener.address().port);
+  console.log('Youlistener.address().port');
 });
