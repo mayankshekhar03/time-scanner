@@ -14,6 +14,15 @@ var app     = express();
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'})); 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+/**bodyParser.json(options)
+ * Parses the text as JSON and exposes the resulting object on req.body.
+ */
+app.use(bodyParser.json());
 app.set('view engine', 'handlebars');
 
 
@@ -23,8 +32,8 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  var query = req.body;
-  var data = {'natural':query+'', 'unix':'12345'};
+  var query = req.body.q;
+  var data = {'natural': query+'', 'unix': '12345'};
   res.render('index', {data: data});
 });
 
