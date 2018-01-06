@@ -35,13 +35,13 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   var query = req.body.q;
-  if(moment(query).isValid()){
+  if(moment(query).isValid() && String(query).match(/^[0-9]+$/) == null){
     var d = moment(query);
-    var data = {'natural':d.format(), 'unix':d};
+    var data = {'natural':d.format("dddd, MMMM Do YYYY"), 'unix':d};
   }else if(String(query).match(/^[0-9]+$/) != null){
-    var d = Date.parse(query);
-    var pd = prettyDate(d);
-    var data = {'natural':pd.format(), 'unix':d};
+    var d = moment.unix(Number(query));
+    var pd = moment.unix(Number(query)).utc();
+    var data = {'natural':pd.format("dddd, MMMM Do YYYY"), 'unix':d};
   }
   res.render('index', {data: data});
 });
