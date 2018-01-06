@@ -18,11 +18,11 @@ app.set('view engine', 'handlebars');
 
 
 app.get('/', function(req, res){
-  var data = {'natural':'jan','unix':'1234'};
-  res.render('index', data);
+  var data = null;
+  res.render('index', {data: data});
 });
 
-
+app
 
 
 // listen for requests :)
