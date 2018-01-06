@@ -35,12 +35,8 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res){
   var query = req.body.q;
-  if (String(query).match("[0-9]+") && String(query).length > 2) {
-    var date = moment.unix(String(query));
-    var data = {'natural': date.unix().format("dddd, MMMM Do YYYY"), 'unix': date.unix()};
-  }else{
-    var date =  moment(String(query));
-  }
+  var d = moment(query);
+  var data = {'natural':d.format(), 'unix':d};
   res.render('index', {data: data});
 });
 
