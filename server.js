@@ -5,6 +5,8 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var path    = require('path');
+var moment = require('moment');
+moment().format();
 
 var app     = express();
 
@@ -38,9 +40,8 @@ app.post('/', function(req, res){
   else
     var unix = Date.parse(query);
   var d = new Date(unix);
-  var formatted = d.toString().substring(0, 15);
-  if(unix != NaN)
-    var data = {'natural': formatted, 'unix': unix};
+  var formatted = d.toString();
+  var data = {'natural': formatted, 'unix': unix};
   res.render('index', {data: data});
 });
 
