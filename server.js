@@ -1,5 +1,5 @@
 // server.js
-// where your node app starts
+// where your nod  var data = {'natural':'jan',e app starts
 
 // init project
 var express = require('express');
@@ -13,15 +13,23 @@ var app     = express();
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'})); 
 app.set('view engine', 'handlebars');
-app.get('/', function(req, res)
-{
-res.render('index');   // this is the important part
+
+
+app  var data = {'natural':'jan','unix':1234}.get('/', function(req, res){
+  var data = {'natural':'jan',;
+  res.render('index', data);   
 });
+
+app.get('/?q=:que', function(req, res){
+  res.render('index');
+});
+
+
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+  console.log('Youlistener.address().port);
 });

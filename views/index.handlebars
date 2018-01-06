@@ -6,5 +6,9 @@
     Check
   </button>
   <br><br><small style='color:grey'>Enter a string to check if it contains time (natural or UNIX).</small>
-  
 </form>
+
+{{#with data}}
+<h1>{{data.natural}}</h1>
+<h1>{{data.unix}}</h1>
+{{/with}}
