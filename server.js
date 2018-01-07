@@ -37,7 +37,7 @@ app.post('/', function(req, res){
   var query = req.body.q;
   if(moment(query).isValid() && String(query).match(/^[0-9]+$/) == null){
     var d = moment(query);
-    var data = {'natural':d.format("dddd, MMMM Do YYYY"), 'unix':(d+'').substring(0, 10)};
+    var data = {'natural':d.format("dddd, MMMM Do YYYY"), 'unix':d.format()};
   }else if(String(query).match(/^[0-9]+$/) != null){
     var d = moment.unix(Number(query));
     var pd = moment.unix(Number(query)).utc();
