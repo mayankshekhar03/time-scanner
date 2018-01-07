@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+
 /**bodyParser.json(options)
  * Parses the text as JSON and exposes the resulting object on req.body.
  */
@@ -37,7 +38,7 @@ app.post('/', function(req, res){
   var query = req.body.q;
   if(moment(query).isValid() && String(query).match(/^[0-9]+$/) == null){
     var d = moment(query);
-    var data = {'natural':d.format("dddd, MMMM Do YYYY"), 'unix':d.format()};
+    var data = {'natural':d.format("dddd, MMMM Do YYYY"), 'unix':d.utc()};
   }else if(String(query).match(/^[0-9]+$/) != null){
     var d = moment.unix(Number(query));
     var pd = moment.unix(Number(query)).utc();
